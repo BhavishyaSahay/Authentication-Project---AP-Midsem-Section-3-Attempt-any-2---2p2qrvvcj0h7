@@ -10,9 +10,7 @@ class VoterService {
   }
   async createVoter(voterDetails = this.details) {
     const voter = await prisma.voter.create({
-      email: voterDetails.email,
       password: bcrypt.hashSync(voterDetails.password, 4),
-      name: voterDetails.name,
     });
     return { voter, message: "Account created Successfully!" };
   }
